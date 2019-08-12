@@ -11,11 +11,11 @@ def register_new_usr():
         new_user['last_name'] = input("Enter your last name\n").capitalize()
         creating_user_name = True
         while(creating_user_name):
-            user_name = input("Enter a user name\n")
+            user_name = input("Enter a username\n")
             unique = True
             for p in data["users"]:
                 if (user_name.lower() == p['user_name']):
-                    print("User name already exists\n")
+                    print("Username already exists\n")
                     unique = False
                     break
             if (unique):
@@ -41,3 +41,24 @@ def register_new_usr():
 
     data['users'].append(new_user)
     return "New user created"
+
+def login():
+    user_name = input("Enter your username\n")
+    password = input("Enter your password\n")
+    for p in data["users"]:
+        if (user_name.lower() == p['user_name'] and password == p['password']):
+            return ["Successful login\n", p]
+        else:
+            return ["Incorrect username or password\n"]
+
+def balance():
+    print("balance")
+
+def withdraw():
+    print("withdraw")
+
+def deposit():
+    print("deposit")
+
+def history():
+    print("history")
