@@ -1,0 +1,11 @@
+- process of bank append
+  -open json file, save as dictionary
+    -pass in dictionary to other functions to do things
+  -create user: append new user to array in dictionary
+    -check if user name already exists
+    -hash/secure the password
+  -log in/out (i.e. user cannot do anything that requires user permission unless they are logged in)
+    -checking balance
+    -check transactions history
+    -withdraw/deposit
+    
