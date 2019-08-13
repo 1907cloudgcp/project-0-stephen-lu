@@ -1,4 +1,84 @@
 {
-  "users": [
-  ]
+    "users": [
+        {
+            "balance": 500,
+            "first_name": "Liam",
+            "last_name": "Smith",
+            "password": "password",
+            "transactions": "",
+            "user_name": "liam_s"
+        },
+        {
+            "balance": 0,
+            "first_name": "Emma",
+            "last_name": "Johnson",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "emma_j"
+        },
+        {
+            "balance": 100000,
+            "first_name": "Noah",
+            "last_name": "Williams",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "noah_w"
+        },
+        {
+            "balance": 1000,
+            "first_name": "Olivia",
+            "last_name": "Jones",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "olivia_j"
+        },
+        {
+            "balance": 549,
+            "first_name": "William",
+            "last_name": "Brown",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "william_b"
+        },
+        {
+            "balance": 2345,
+            "first_name": "Ava",
+            "last_name": "Davis",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "ava_d"
+        },
+        {
+            "balance": 5555,
+            "first_name": "James",
+            "last_name": "Miller",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "james_m"
+        },
+        {
+            "balance": 15493,
+            "first_name": "Isabella",
+            "last_name": "Wilson",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "isabella_w"
+        },
+        {
+            "balance": 81234,
+            "first_name": "Oliver",
+            "last_name": "Moore",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "oliver_m"
+        },
+        {
+            "balance": 413245,
+            "first_name": "Sophia",
+            "last_name": "Taylor",
+            "password": "verysecure",
+            "transactions": "",
+            "user_name": "sophia_t"
+        }
+    ]
 }
