@@ -47,7 +47,6 @@ def login():
     user_name = input("Enter your username\n")
     password = input("Enter your password\n")
     for p in data["users"]:
-        print("2hello")
         if (user_name.lower() == p['user_name'] and password == p['password']):
             matched = True
     if matched:
