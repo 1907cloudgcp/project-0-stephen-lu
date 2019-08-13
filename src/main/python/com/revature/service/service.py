@@ -43,13 +43,17 @@ def register_new_usr():
     return "New user created"
 
 def login():
+    matched = False
     user_name = input("Enter your username\n")
     password = input("Enter your password\n")
     for p in data["users"]:
+        print("2hello")
         if (user_name.lower() == p['user_name'] and password == p['password']):
-            return ["Successful login\n", p]
-        else:
-            return ["Incorrect username or password\n"]
+            matched = True
+    if matched:
+        return ["Successful login\n", p]
+    else:
+        return ["Incorrect username or password\n"]
 
 def balance():
     print("balance")
