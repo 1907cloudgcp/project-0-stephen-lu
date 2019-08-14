@@ -1,5 +1,10 @@
 from myio import io as io
+from error import error as e
 import datetime
+import logging
+
+logging.basicConfig(filename='app.log', format='%(asctime)s - %(message)s')
+
 data = io.get_database()
 
 def register_new_usr():
@@ -41,19 +46,28 @@ def register_new_usr():
                     registering = False
 
     data['users'].append(new_user)
+    logging.warning('New user ' + new_user['user_name'] + ' created')
     return "New user created"
 
 def login():
-    matched = False
     user_name = input("Enter your username\n")
     password = input("Enter your password\n")
+    return find_user(user_name, password)
+
+def find_user(user_name, password):
+    matched = False
     for p in data["users"]:
         if (user_name.lower() == p['user_name'] and password == p['password']):
             matched = True
             user = p
-    if matched:
-        return ["Successful login\n", user]
-    else:
+    try:
+        if matched:
+            logging.warning('User ' + user_name + ' logged in')
+            return ["Successful login\n", user]
+        else:
+            raise e.IncorrectLogin
+    except e.IncorrectLogin:
+        logging.warning('User ' + user_name + ' incorrect log in')
         return ["Incorrect username or password\n"]
 
 def balance(user):
@@ -62,11 +76,18 @@ def balance(user):
 def withdraw(user):
     running = True
     while(running):
-        amount = input("Enter value for withdrawl: ")
-        if int(amount) <= user['balance']:
-            running = False
-        else:
-            print('Value too large\n')
+        try:
+            amount = input("Enter value for withdrawl: ")
+            if int(amount) < 0:
+                raise e.ValueTooSmallError
+            elif int(amount) <= user['balance']:
+                running = False
+            else:
+                raise e.ValueTooLargeError
+        except e.ValueTooSmallError:
+            print('Invalid Value\n')
+        except e.ValueTooLargeError:
+            print('Invalid Value\n')
     user['balance'] -= int(amount)
     print("Withdraw successful, current balance: " + str(user['balance']) + '\n')
     time = datetime.datetime.now()

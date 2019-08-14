@@ -1,4 +1,7 @@
 from service import service as s
+import logging
+
+logging.basicConfig(filename='app.log', format='%(asctime)s - %(message)s')
 
 def run_app():
     user = 0
@@ -27,8 +30,9 @@ def run_app():
                     print('\nTransaction History:\n')
                     print(s.history(login[1]))
                 elif  user == '5':
-                    login = None
                     logged_in = False
+                    logging.warning('User ' + login[1]['user_name'] + ' logged out')
+                    login = None
     elif user == '3':
         s.exit_app()
         return False
