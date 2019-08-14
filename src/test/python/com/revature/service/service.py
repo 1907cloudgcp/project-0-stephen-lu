@@ -39,14 +39,16 @@ def register_new_usr():
             else:
                 if (confirm_user.lower() == "yes"):
                     registering = False
-
     data['users'].append(new_user)
     return "New user created"
 
 def login():
-    matched = False
     user_name = input("Enter your username\n")
     password = input("Enter your password\n")
+    return find_user(user_name, password)
+
+def find_user(user_name, password):
+    matched = False
     for p in data["users"]:
         if (user_name.lower() == p['user_name'] and password == p['password']):
             matched = True
