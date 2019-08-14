@@ -1,4 +1,5 @@
 from myio import io as io
+import datetime
 data = io.get_database()
 
 def register_new_usr():
@@ -49,19 +50,41 @@ def login():
     for p in data["users"]:
         if (user_name.lower() == p['user_name'] and password == p['password']):
             matched = True
+            user = p
     if matched:
-        return ["Successful login\n", p]
+        return ["Successful login\n", user]
     else:
         return ["Incorrect username or password\n"]
 
-def balance():
-    print("balance")
+def balance(user):
+    print("Current balace: " + str(user['balance']) + '\n')
 
-def withdraw():
-    print("withdraw")
+def withdraw(user):
+    running = True
+    while(running):
+        amount = input("Enter value for withdrawl: ")
+        if int(amount) <= user['balance']:
+            running = False
+        else:
+            print('Vale too large\n')
+    user['balance'] -= int(amount)
+    print("Withdraw successful, current balance: " + str(user['balance']) + '\n')
+    time = datetime.datetime.now()
+    user['transactions'] += str(time) + '    Withdraw ' + amount + '\n'
 
-def deposit():
-    print("deposit")
 
-def history():
-    print("history")
+def deposit(user):
+    amount = input("Enter value for deposit: ")
+    user['balance'] += int(amount)
+    print("Withdraw successful, current balance: " + str(user['balance']) + '\n')
+    time = datetime.datetime.now()
+    user['transactions'] += str(time) + '    Deposit ' + amount + '\n'
+
+
+
+def history(user):
+    print('\nTransaction History:\n')
+    print(user['transactions'])
+
+def exit_app():
+    io.save_data(data)

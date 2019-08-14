@@ -9,7 +9,7 @@ This is your main script, this should call several other scripts within your pac
 def main():
 	running = True
 	while(running):
-		c.run_app()
+		running = c.run_app()
 
 
 if __name__ == '__main__':

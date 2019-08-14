@@ -2,9 +2,9 @@ from service import service as s
 
 def run_app():
     user = 0
-    while (user != '1' and user != '2'):
-        user = input("What would you like to do? (Enter 1 or 2):\n\t1. Register as a new user\n\t2. Login\n")
-        if user != '1' and user != '2':
+    while (user != '1' and user != '2'and user != '3'):
+        user = input("What would you like to do? (Enter a number):\n\t1. Register as a new user\n\t2. Login\n\t3. Exit\n")
+        if user != '1' and user != '2' and user != '3':
             print("Please enter a valid request\n")
     if user == '1':
         print(s.register_new_usr())
@@ -18,12 +18,17 @@ def run_app():
                 if user != '1' and user != '2' and user != '3' and user != '4' and user != '5':
                     print("Please enter a valid request\n")
                 elif  user == '1':
-                    s.balance()
+                    s.balance(login[1])
                 elif  user == '2':
-                    s.withdraw()
+                    s.withdraw(login[1])
                 elif  user == '3':
-                    s.deposit()
+                    s.deposit(login[1])
                 elif  user == '4':
-                    s.history()
+                    s.history(login[1])
                 elif  user == '5':
-                    break
+                    login = None
+                    logged_in = False
+    elif user == '3':
+        s.exit_app()
+        return False
+    return True
